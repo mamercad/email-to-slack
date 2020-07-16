@@ -10,7 +10,7 @@ lines = b""
 for line in sys.stdin:
   lines += str.encode(line)
 msg = email.message_from_bytes(lines)
-message = msg.get_payload()
+message = msg.get_payload().replace('\\n', '\n')
 
 headers={'Content-Type': 'application/json'}
 
